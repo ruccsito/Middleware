@@ -1,0 +1,723 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4ECBF462-3606-4229-BF48-1912F8750758}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MiddlewareService</RootNamespace>
+    <AssemblyName>MiddlewareService</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FFmpeg, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EmergenceGuardian.FFmpeg.1.0.1\lib\net40\FFmpeg.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Data\ProyectoModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProyectoModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ProyectoModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProyectoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ProyectoModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProyectoModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Trabajo.cs">
+      <DependentUpon>ProyectoModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\TrabajosRepo.cs" />
+    <Compile Include="ITranscode.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\WfsServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Services\FFmpegMap.cs" />
+    <Compile Include="Services\FFmpegOptions.cs" />
+    <Compile Include="Services\FFMPEGService.cs" />
+    <Compile Include="Services\WFSService.cs" />
+    <Compile Include="Transcode.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <EntityDeploy Include="Data\ProyectoModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ProyectoModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Data\ProyectoModel.edmx.diagram">
+      <DependentUpon>ProyectoModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Service References\WfsServiceReference\item.wsdl" />
+    <None Include="Service References\WfsServiceReference\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WfsServiceReference\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WfsServiceReference\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WfsServiceReference\item3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WfsServiceReference\item4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WfsServiceReference\item5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WfsServiceReference\item6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WfsServiceReference\item7.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WfsServiceReference\item8.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WfsServiceReference\JMServices.wsdl" />
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.Asset.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.ClearParameterXmlFromMemoryResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.ClientConfig.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.ControllerDashboard.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.Dashboard.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.DeactivateBackupControllerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.EnableFetcherResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.ErrorLog.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.Fetcher.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.FetchTaskByIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.FetchTaskByTypeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.FetchTaskResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.FetchTaskWithComplexityResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GenerateJobByWorkflowGuidAndTypeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GenerateJobByWorkflowGuidResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GenerateJobByWorkflowResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GenerateReportResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GenerateTemplateExJobByWorkflowResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetActiveJobsPageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetActiveTaskByMachineResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetActiveTaskCountResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetBindingPortResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetConfigListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetConfigPageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetConfigResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetConnectionStringResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetControllerDashboardResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetDistinctModuleSubTypesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetDistinctPresetTypesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetErrorLogByReferenceIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetErrorLogListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetErrorLogPageByCategoryResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetErrorLogPageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetErrorLogResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetFetcherByIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetFetcherConfigResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetFetcherListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetFetcherPageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetJMGroupResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetJobAssetsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetJobCountByNameResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetJobCountResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetJobDashboardResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetJobManagerMachineTimeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetJobPageByScheduleResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetJobPageByServiceIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetJobPageByTaskStatusAndTypeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetJobPageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetJobPageWithStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetJobPageWithTaskAndStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetJobPageWithTaskResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetJobResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetLicenseDetailsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetMachineGroupByIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetMachineGroupListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetModuleListBySubTypeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetModuleListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetModulePageBySubTypeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetModulePageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetModuleResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetModuleSchemeListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetModuleSchemePageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetModuleSchemeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetNextAvailableJobPriorityResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetPresetIdListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetPresetListByCategoryResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetPresetListByTypeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetPresetListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetPresetPageByCategoryResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetPresetPageByTypeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetPresetPageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetPresetResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetPresetsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetPresetXmlByIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetServerDefinitionByIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetServerDefinitionListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetSystemLicensingStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetSystemMachineGroupListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetTaskActiveCountExResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetTaskByIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetTaskCountByTaskTypeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetTaskCountExResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetTaskCountResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetTaskGuidPageByTypeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetTaskListByJobIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetTaskListByTypeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetTaskPageByScheduleResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetTaskPageByTypeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetTaskPageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetTaskPropertyExByIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetTaskPropertyExByReferenceIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetTaskPropertyExByRefNamSeqResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetTaskPropertyExPageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetTasksUpdatedSinceByJobIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetTemplateModuleListByTypeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetTemplateModulePageByTypeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetTotalJobCountResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetVersionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetWatchConfigByIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetWatchConfigPageLeanResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetWatchConfigPageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetWatchFolderByIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetWatchFoldersAssociatedWithWorkflowResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetWorkflowIdListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetWorkflowTemplateByIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetWorkflowTemplatePageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.GetWorkflowXMLByIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.HandleLicensingForNodeStopResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.IsFetcherEnabledExResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.IsNodeLicensedToStartResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.IsOperationLicensedResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.IsPresetNameAvailableResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.Job.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.JobManagerGroup.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.JobManagerStatus.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.JobUpdateResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.MachineGroup.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.Module.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.ModuleScheme.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.ModuleSubType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.PauseJobsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.Preset.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.PresetGuidWithUpdateDateTime.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.PresetType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.PurgeAllJobsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.QueueComplexJobResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.QueueJobByWatchFolderGuidResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.QueueJobByWorkflowGuidResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.QueueJobByWorkflowResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.QueueJobResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.QueueJobXMLByWorkflowGuidResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.QueueJobXMLResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.QueueWorkflowJobExResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.QueueWorkflowJobResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.QueueWorkflowTemplateJobResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.RegisterFetcherExResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.RegisterFetcherResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.RemoveConfigResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.RemoveFetcherResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.RemoveJobResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.RemoveJobsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.RemoveJobsWithStatusByTaskStatusAndTypeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.RemoveJobsWithStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.RemoveMachineGroupResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.RemoveModuleResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.RemoveModuleSchemeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.RemovePresetResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.RemoveServerDefinitionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.RemoveWatchConfigResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.RemoveWorkflowTemplateResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.Report.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.ResumeJobsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.ServerDefinition.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.StoreConfigResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.StoreFetcherConfigResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.StoreLogsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.StoreMachineGroupResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.StoreModuleResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.StoreModuleSchemeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.StorePresetResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.StoreServerDefinitionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.StoreTaskPropertiesExResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.StoreTaskPropertyExResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.StoreWatchConfigResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.StoreWorkflowTemplateResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.StoreXMLPresetResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.SystemConfig.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.Task.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.TaskPropertyEx.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.UpdateFetcherStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.UpdateJobPriorityResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.UpdateJobStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.UpdateMachineStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.UpdateTaskStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.WatchConfigObject.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.WorkflowIDWithLastUpdateDateTime.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WfsServiceReference\MiddlewareService.WfsServiceReference.WorkflowTemplateObject.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\WfsServiceReference\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WfsServiceReference\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WfsServiceReference\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WfsServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Data\ProyectoModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ProyectoModel.edmx</DependentUpon>
+      <LastGenOutput>ProyectoModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Data\ProyectoModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ProyectoModel.edmx</DependentUpon>
+      <LastGenOutput>ProyectoModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="SupportFiles\Workflow_Transcode.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MiddlewareWeb\MiddlewareWeb.csproj">
+      <Project>{ECDAD1CD-4C95-4739-8BEB-7665B0791BDB}</Project>
+      <Name>MiddlewareWeb</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\FFmpeg.Win64.Static.3.3.3.1\build\FFmpeg.Win64.Static.targets" Condition="Exists('..\packages\FFmpeg.Win64.Static.3.3.3.1\build\FFmpeg.Win64.Static.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\FFmpeg.Win64.Static.3.3.3.1\build\FFmpeg.Win64.Static.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\FFmpeg.Win64.Static.3.3.3.1\build\FFmpeg.Win64.Static.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

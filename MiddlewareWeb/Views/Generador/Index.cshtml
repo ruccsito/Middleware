@@ -1,0 +1,138 @@
+﻿
+@{
+    ViewBag.Title = "Generador";
+
+}
+
+<div class="generador">
+    <form action="/Trabajos/Crear" method="post">
+        @* Source Files *@
+        <div class="form-group row">
+            <label for="sourceFile" class="col-sm-2 col-form-label">Ruta origen</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="sourceFile" placeholder="Seleccionar..">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="targetFile" class="col-sm-2 col-form-label">Ruta destino</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="targetFile" placeholder="Seleccionar..">
+            </div>
+        </div>
+        <hr />
+        @* Transcoders / Containers *@
+        <div class="form-group row">
+                <label class="col-form-legend col-sm-2">Transcoder</label>
+                <div class="col-sm-4">
+                    <select class="custom-select" name="transcoder" id="transcodeSelect">
+                        <option disabled selected>Seleccionar Transcoder</option>                        
+                        @foreach (var i in ViewBag.transcoders)
+                        {
+                            <option value="@i">@i</option>
+                        }
+                    </select>
+                </div>
+                <label class="col-form-legend col-sm-2">Contenedor</label>
+                <div class="col-sm-4" id="containers">
+                    <select class="custom-select" name="container" id="containersSelect">
+                        <option disabled selected>Seleccionar Contenedor</option>
+                    </select>
+                </div>
+        </div>
+        <hr />
+        @* Video Settings *@
+        <div class="form-group row">
+            <div class="col-md-6">
+                <h6>Configuración de video</h6>
+            </div>
+            <div class="col-md-6"></div>
+        </div>
+        <div class="form-group row">
+            <div class="form-group col-md-3">
+                <label for="videoCodec" class="col-form-label">Códec Video</label>
+                <select class="form-control" name="videoCodec" id="videoCodecs">
+                    <option disabled selected>Seleccionar</option>
+                </select>
+            </div>
+			<div class="form-group col-md-3">
+                <label for="width" class="col-form-label">Resolución Horizontal</label>
+                <select name="width" class="form-control">
+                    <option disabled selected>Seleccionar</option>
+                    <option value="720">720 SD</option>
+                    <option value="1080">1080 HD</option>
+                    <option value="1920">1920 FHD</option>
+                    <option value="3840">3840 UHD</option>
+                </select>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="height" class="col-form-label">Resolución Vertical</label>
+                <select name="height" class="form-control">
+                    <option disabled selected>Seleccionar</option>
+                    <option value="480">480 SD</option>
+                    <option value="720">720 HD</option>
+                    <option value="1080">1080 FHD</option>
+                    <option value="2160">2160 UHD</option>
+                </select>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="videoBitrate" class="col-form-label">Bit-rate Video (Kbps)</label>
+                <select name="videoBitrate" class="form-control">
+                    <option disabled selected>Seleccionar</option>
+                    <option value="1000">1000</option>
+                    <option value="2000">2000</option>
+                    <option value="3000">3000</option>
+					<option value="8000">8000</option>
+                    <option value="15000">15000</option>
+                </select>
+            </div>
+        </div>
+        <hr />
+        @* Audio Settings *@
+        <div class="form-group row">
+            <div class="col-md-6">
+                <h6>Configuración de audio</h6>
+            </div>
+            <div class="col-md-6"></div>
+        </div>
+        <div class="form-group row">
+            <div class="form-group col-md-3">
+                <label for="audioCodec" class="col-form-label">Códec Audio</label>
+                <select class="form-control" name="audiocodec" id="audioCodecs">
+                    <option disabled selected>Seleccionar</option>
+                </select>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="channels" class="col-form-label">Canales</label>
+                <select name="channels" class="form-control">
+                    <option disabled selected>Seleccionar</option>
+                    <option value="1">Stereo</option>
+                    <option value="2">5.1</option>
+                </select>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="sampling" class="col-form-label">Muestreo</label>
+                <select name="sampling" class="form-control">
+                    <option disabled selected>Seleccionar</option>
+                    <option value="22">22 kHz</option>
+                    <option value="44">44 kHz</option>
+
+                </select>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="audioBitrate" class="col-form-label">Bit-rate Audio (Kbps)</label>
+                <select name="audioBitrate" class="form-control">
+                    <option disabled selected>Seleccionar</option>
+                    <option value="64">64</option>
+                    <option value="96">96</option>
+                    <option value="128">128</option>
+					<option value="192">192</option>
+                    <option value="256">256</option>
+                </select>
+            </div>
+        </div>
+        @* Button *@
+        <div class="form-group text-center">
+            <button type="submit" class="btn btn-outline-primary">Enviar</button>
+        </div>
+    </form>
+</div>

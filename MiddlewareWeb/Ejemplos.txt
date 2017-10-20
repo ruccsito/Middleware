@@ -1,0 +1,3 @@
+﻿
+FFMPEG
+ffmpeg -i C:\Users\UADE-Tesis\Desktop\small.mp4 -vf scale=320:240 -acodec aac -ab 128k -vcodec libx264 -x264-params "nal-hrd=cbr" -b:v 1M -minrate 1M -maxrate 1M -bufsize 2M C:\Users\UADE-Tesis\Desktop\final_video.mp4

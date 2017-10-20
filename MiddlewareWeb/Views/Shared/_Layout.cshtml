@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Middleware Naredo-Scolaro</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="~/Content/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="~/Content/dist/css/justified-nav.css" rel="stylesheet">
+    <link href="~/Content/dist/css/generador.css" rel="stylesheet">
+    <link href="~/Content/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="masthead">
+            <h3 class="text-muted">Middleware de Automatización para conversión de Audio y Video</h3>
+            <nav class="navbar navbar-expand-md navbar-light bg-light rounded mb-3">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav text-md-center nav-justified w-100">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/Home/Index">Inicio <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Generador">Generador</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Trabajos">Trabajos</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+
+        @RenderBody()
+
+        <!-- Site footer -->
+        <footer class="footer">
+            <p>&copy; Sergio Naredo (LU 98.050) - Iván Scolaro (LU 131.297) - UADE 2017.</p>
+        </footer>
+
+    </div> 
+    <!-- /container -->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="~/Content/assets/js/vendor/popper.min.js"></script>
+    <script src="~/Content/dist/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/Form.js"></script>
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="~/Content/assets/js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- Open modal -->
+    @if (!String.IsNullOrEmpty(ViewBag.newJob))
+    {
+        <script type="text/javascript">
+    $(document).ready(function(){
+        $("#newJobModal").modal('show');
+    });
+        </script>
+    }
+</body>
+</html>

@@ -1,0 +1,9 @@
+﻿@model MiddlewareWeb.Models.FormData
+
+<select class="custom-select" name="@Model.name" id="@Model.id">
+    <option disabled selected>@Model.placeholder</option>
+    @foreach (var vc in Model.options)
+    {
+        <option value="@vc.Trim()">@vc.Trim()</option>
+    }
+</select>

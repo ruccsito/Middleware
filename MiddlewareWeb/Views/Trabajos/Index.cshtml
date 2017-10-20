@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "Finalizados";
+}
+
+@model  IEnumerable<MiddlewareWeb.Data.Trabajo>
+
+<!-- Modal -->
+<div class="modal fade" id="newJobModal" tabindex="-1" role="dialog" aria-labelledby="newJobModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                <p>El trabajo se agregó correctamente a Trabajos Pendientes.</p>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-outline-success" data-dismiss="modal">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Ruta Origen</th>
+            <th>Ruta Destino</th>
+            <th>Transcoder</th>
+            <th>Video Códec</th>
+            <th>Audio Códec</th>
+            <th>Estado</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var t in Model)
+        {
+            <tr>
+                <td>@t.sourceFile</td>
+                <td>@t.targetFile</td>
+                <td>@t.transcoder</td>
+                <td>@t.videoCodec</td>
+                <td>@t.audioCodec</td>
+                <td>@t.transcodeStatus</td>
+            </tr>
+        }
+    </tbody>
+</table>

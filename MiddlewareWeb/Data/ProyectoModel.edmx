@@ -1,0 +1,671 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ProyectoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CodecAudio">
+          <Key>
+            <PropertyRef Name="IdCodecAudio" />
+          </Key>
+          <Property Name="IdCodecAudio" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="nchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CodecVideo">
+          <Key>
+            <PropertyRef Name="IdCodecVideo" />
+          </Key>
+          <Property Name="IdCodecVideo" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Contenedor">
+          <Key>
+            <PropertyRef Name="IdContenedor" />
+          </Key>
+          <Property Name="IdContenedor" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="nchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ContenedorCodecAudio">
+          <Key>
+            <PropertyRef Name="IdContenedorAudio" />
+          </Key>
+          <Property Name="IdContenedorAudio" Type="int" Nullable="false" />
+          <Property Name="IdContenedor" Type="int" Nullable="false" />
+          <Property Name="IdCodecAudio" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ContenedorCodecVideo">
+          <Key>
+            <PropertyRef Name="IdContenedorCodecVideo" />
+          </Key>
+          <Property Name="IdContenedorCodecVideo" Type="int" Nullable="false" />
+          <Property Name="IdContenedor" Type="int" />
+          <Property Name="IdCodecVideo" Type="int" />
+        </EntityType>
+        <EntityType Name="ContenedorTranscoder">
+          <Key>
+            <PropertyRef Name="IdContenedorTranscoder" />
+          </Key>
+          <Property Name="IdContenedorTranscoder" Type="int" Nullable="false" />
+          <Property Name="IdContenedor" Type="int" Nullable="false" />
+          <Property Name="IdTranscoder" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NodoConexion">
+          <Key>
+            <PropertyRef Name="NombreNodo" />
+          </Key>
+          <Property Name="IPv4" Type="nchar" MaxLength="14" />
+          <Property Name="IPv6" Type="nchar" MaxLength="45" />
+          <Property Name="Usuario" Type="nchar" MaxLength="20" />
+          <Property Name="Contraseña" Type="nchar" MaxLength="30" />
+          <Property Name="NombreNodo" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="FQDN" Type="nchar" MaxLength="50" />
+          <Property Name="IdTranscoder" Type="int" />
+        </EntityType>
+        <EntityType Name="PuertoConexion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="NodoConexion" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="Tipo" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Numero" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Trabajos">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tipo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Resultado" Type="nvarchar" MaxLength="50" />
+          <Property Name="Comentarios" Type="nvarchar" MaxLength="50" />
+          <Property Name="sourceFile" Type="nvarchar" MaxLength="50" />
+          <Property Name="targetFile" Type="nvarchar" MaxLength="50" />
+          <Property Name="transcoder" Type="nvarchar" MaxLength="50" />
+          <Property Name="container" Type="nvarchar" MaxLength="50" />
+          <Property Name="videoCodec" Type="nvarchar" MaxLength="50" />
+          <Property Name="height" Type="nvarchar" MaxLength="50" />
+          <Property Name="width" Type="nvarchar" MaxLength="50" />
+          <Property Name="videoBitRate" Type="nvarchar" MaxLength="50" />
+          <Property Name="audioCodec" Type="nvarchar" MaxLength="50" />
+          <Property Name="channels" Type="nvarchar" MaxLength="50" />
+          <Property Name="sampling" Type="nvarchar" MaxLength="50" />
+          <Property Name="audioBitRate" Type="nvarchar" MaxLength="50" />
+          <Property Name="transcodeStatus" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Transcoder">
+          <Key>
+            <PropertyRef Name="IdTranscoder" />
+          </Key>
+          <Property Name="IdTranscoder" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Version" Type="nchar" MaxLength="10" />
+          <Property Name="VersionAPI" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <Association Name="FK_ContenedorCodecAudio_CodecAudio">
+          <End Role="CodecAudio" Type="Self.CodecAudio" Multiplicity="1" />
+          <End Role="ContenedorCodecAudio" Type="Self.ContenedorCodecAudio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CodecAudio">
+              <PropertyRef Name="IdCodecAudio" />
+            </Principal>
+            <Dependent Role="ContenedorCodecAudio">
+              <PropertyRef Name="IdCodecAudio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContenedorCodecAudio_Contenedor">
+          <End Role="Contenedor" Type="Self.Contenedor" Multiplicity="1" />
+          <End Role="ContenedorCodecAudio" Type="Self.ContenedorCodecAudio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contenedor">
+              <PropertyRef Name="IdContenedor" />
+            </Principal>
+            <Dependent Role="ContenedorCodecAudio">
+              <PropertyRef Name="IdContenedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContenedorCodecVideo_CodecVideo">
+          <End Role="CodecVideo" Type="Self.CodecVideo" Multiplicity="0..1" />
+          <End Role="ContenedorCodecVideo" Type="Self.ContenedorCodecVideo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CodecVideo">
+              <PropertyRef Name="IdCodecVideo" />
+            </Principal>
+            <Dependent Role="ContenedorCodecVideo">
+              <PropertyRef Name="IdCodecVideo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContenedorCodecVideo_Contenedor">
+          <End Role="Contenedor" Type="Self.Contenedor" Multiplicity="0..1" />
+          <End Role="ContenedorCodecVideo" Type="Self.ContenedorCodecVideo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contenedor">
+              <PropertyRef Name="IdContenedor" />
+            </Principal>
+            <Dependent Role="ContenedorCodecVideo">
+              <PropertyRef Name="IdContenedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContenedorTranscoder_Contenedor">
+          <End Role="Contenedor" Type="Self.Contenedor" Multiplicity="1" />
+          <End Role="ContenedorTranscoder" Type="Self.ContenedorTranscoder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contenedor">
+              <PropertyRef Name="IdContenedor" />
+            </Principal>
+            <Dependent Role="ContenedorTranscoder">
+              <PropertyRef Name="IdContenedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContenedorTranscoder_Transcoder">
+          <End Role="Transcoder" Type="Self.Transcoder" Multiplicity="1" />
+          <End Role="ContenedorTranscoder" Type="Self.ContenedorTranscoder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Transcoder">
+              <PropertyRef Name="IdTranscoder" />
+            </Principal>
+            <Dependent Role="ContenedorTranscoder">
+              <PropertyRef Name="IdTranscoder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NodoConexion_Transcoder">
+          <End Role="Transcoder" Type="Self.Transcoder" Multiplicity="0..1" />
+          <End Role="NodoConexion" Type="Self.NodoConexion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Transcoder">
+              <PropertyRef Name="IdTranscoder" />
+            </Principal>
+            <Dependent Role="NodoConexion">
+              <PropertyRef Name="IdTranscoder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PuertoConexion_NodoConexion">
+          <End Role="NodoConexion" Type="Self.NodoConexion" Multiplicity="1" />
+          <End Role="PuertoConexion" Type="Self.PuertoConexion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NodoConexion">
+              <PropertyRef Name="NombreNodo" />
+            </Principal>
+            <Dependent Role="PuertoConexion">
+              <PropertyRef Name="NodoConexion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ProyectoModelStoreContainer">
+          <EntitySet Name="CodecAudio" EntityType="Self.CodecAudio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CodecVideo" EntityType="Self.CodecVideo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contenedor" EntityType="Self.Contenedor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContenedorCodecAudio" EntityType="Self.ContenedorCodecAudio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContenedorCodecVideo" EntityType="Self.ContenedorCodecVideo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContenedorTranscoder" EntityType="Self.ContenedorTranscoder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NodoConexion" EntityType="Self.NodoConexion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PuertoConexion" EntityType="Self.PuertoConexion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Trabajos" EntityType="Self.Trabajos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Transcoder" EntityType="Self.Transcoder" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ContenedorCodecAudio_CodecAudio" Association="Self.FK_ContenedorCodecAudio_CodecAudio">
+            <End Role="CodecAudio" EntitySet="CodecAudio" />
+            <End Role="ContenedorCodecAudio" EntitySet="ContenedorCodecAudio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContenedorCodecAudio_Contenedor" Association="Self.FK_ContenedorCodecAudio_Contenedor">
+            <End Role="Contenedor" EntitySet="Contenedor" />
+            <End Role="ContenedorCodecAudio" EntitySet="ContenedorCodecAudio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContenedorCodecVideo_CodecVideo" Association="Self.FK_ContenedorCodecVideo_CodecVideo">
+            <End Role="CodecVideo" EntitySet="CodecVideo" />
+            <End Role="ContenedorCodecVideo" EntitySet="ContenedorCodecVideo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContenedorCodecVideo_Contenedor" Association="Self.FK_ContenedorCodecVideo_Contenedor">
+            <End Role="Contenedor" EntitySet="Contenedor" />
+            <End Role="ContenedorCodecVideo" EntitySet="ContenedorCodecVideo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContenedorTranscoder_Contenedor" Association="Self.FK_ContenedorTranscoder_Contenedor">
+            <End Role="Contenedor" EntitySet="Contenedor" />
+            <End Role="ContenedorTranscoder" EntitySet="ContenedorTranscoder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContenedorTranscoder_Transcoder" Association="Self.FK_ContenedorTranscoder_Transcoder">
+            <End Role="Transcoder" EntitySet="Transcoder" />
+            <End Role="ContenedorTranscoder" EntitySet="ContenedorTranscoder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NodoConexion_Transcoder" Association="Self.FK_NodoConexion_Transcoder">
+            <End Role="Transcoder" EntitySet="Transcoder" />
+            <End Role="NodoConexion" EntitySet="NodoConexion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PuertoConexion_NodoConexion" Association="Self.FK_PuertoConexion_NodoConexion">
+            <End Role="NodoConexion" EntitySet="NodoConexion" />
+            <End Role="PuertoConexion" EntitySet="PuertoConexion" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ProyectoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CodecAudio">
+          <Key>
+            <PropertyRef Name="IdCodecAudio" />
+          </Key>
+          <Property Name="IdCodecAudio" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ContenedorCodecAudios" Relationship="Self.FK_ContenedorCodecAudio_CodecAudio" FromRole="CodecAudio" ToRole="ContenedorCodecAudio" />
+        </EntityType>
+        <EntityType Name="CodecVideo">
+          <Key>
+            <PropertyRef Name="IdCodecVideo" />
+          </Key>
+          <Property Name="IdCodecVideo" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="ContenedorCodecVideos" Relationship="Self.FK_ContenedorCodecVideo_CodecVideo" FromRole="CodecVideo" ToRole="ContenedorCodecVideo" />
+        </EntityType>
+        <EntityType Name="Contenedor">
+          <Key>
+            <PropertyRef Name="IdContenedor" />
+          </Key>
+          <Property Name="IdContenedor" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ContenedorCodecAudios" Relationship="Self.FK_ContenedorCodecAudio_Contenedor" FromRole="Contenedor" ToRole="ContenedorCodecAudio" />
+          <NavigationProperty Name="ContenedorCodecVideos" Relationship="Self.FK_ContenedorCodecVideo_Contenedor" FromRole="Contenedor" ToRole="ContenedorCodecVideo" />
+          <NavigationProperty Name="ContenedorTranscoders" Relationship="Self.FK_ContenedorTranscoder_Contenedor" FromRole="Contenedor" ToRole="ContenedorTranscoder" />
+        </EntityType>
+        <EntityType Name="ContenedorCodecAudio">
+          <Key>
+            <PropertyRef Name="IdContenedorAudio" />
+          </Key>
+          <Property Name="IdContenedorAudio" Type="Int32" Nullable="false" />
+          <Property Name="IdContenedor" Type="Int32" Nullable="false" />
+          <Property Name="IdCodecAudio" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CodecAudio" Relationship="Self.FK_ContenedorCodecAudio_CodecAudio" FromRole="ContenedorCodecAudio" ToRole="CodecAudio" />
+          <NavigationProperty Name="Contenedor" Relationship="Self.FK_ContenedorCodecAudio_Contenedor" FromRole="ContenedorCodecAudio" ToRole="Contenedor" />
+        </EntityType>
+        <EntityType Name="ContenedorCodecVideo">
+          <Key>
+            <PropertyRef Name="IdContenedorCodecVideo" />
+          </Key>
+          <Property Name="IdContenedorCodecVideo" Type="Int32" Nullable="false" />
+          <Property Name="IdContenedor" Type="Int32" />
+          <Property Name="IdCodecVideo" Type="Int32" />
+          <NavigationProperty Name="CodecVideo" Relationship="Self.FK_ContenedorCodecVideo_CodecVideo" FromRole="ContenedorCodecVideo" ToRole="CodecVideo" />
+          <NavigationProperty Name="Contenedor" Relationship="Self.FK_ContenedorCodecVideo_Contenedor" FromRole="ContenedorCodecVideo" ToRole="Contenedor" />
+        </EntityType>
+        <EntityType Name="ContenedorTranscoder">
+          <Key>
+            <PropertyRef Name="IdContenedorTranscoder" />
+          </Key>
+          <Property Name="IdContenedorTranscoder" Type="Int32" Nullable="false" />
+          <Property Name="IdContenedor" Type="Int32" Nullable="false" />
+          <Property Name="IdTranscoder" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Contenedor" Relationship="Self.FK_ContenedorTranscoder_Contenedor" FromRole="ContenedorTranscoder" ToRole="Contenedor" />
+          <NavigationProperty Name="Transcoder" Relationship="Self.FK_ContenedorTranscoder_Transcoder" FromRole="ContenedorTranscoder" ToRole="Transcoder" />
+        </EntityType>
+        <EntityType Name="NodoConexion">
+          <Key>
+            <PropertyRef Name="NombreNodo" />
+          </Key>
+          <Property Name="IPv4" Type="String" MaxLength="14" FixedLength="true" Unicode="true" />
+          <Property Name="IPv6" Type="String" MaxLength="45" FixedLength="true" Unicode="true" />
+          <Property Name="Usuario" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="Contraseña" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="NombreNodo" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="FQDN" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="IdTranscoder" Type="Int32" />
+          <NavigationProperty Name="Transcoder" Relationship="Self.FK_NodoConexion_Transcoder" FromRole="NodoConexion" ToRole="Transcoder" />
+          <NavigationProperty Name="PuertoConexions" Relationship="Self.FK_PuertoConexion_NodoConexion" FromRole="NodoConexion" ToRole="PuertoConexion" />
+        </EntityType>
+        <EntityType Name="PuertoConexion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="NodoConexion" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Tipo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Numero" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="NodoConexion1" Relationship="Self.FK_PuertoConexion_NodoConexion" FromRole="PuertoConexion" ToRole="NodoConexion" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Trabajo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Resultado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Comentarios" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sourceFile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="targetFile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="transcoder" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="container" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="videoCodec" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="height" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="width" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="videoBitRate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="audioCodec" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="channels" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sampling" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="audioBitRate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="transcodeStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Transcoder">
+          <Key>
+            <PropertyRef Name="IdTranscoder" />
+          </Key>
+          <Property Name="IdTranscoder" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Version" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="VersionAPI" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="ContenedorTranscoders" Relationship="Self.FK_ContenedorTranscoder_Transcoder" FromRole="Transcoder" ToRole="ContenedorTranscoder" />
+          <NavigationProperty Name="NodoConexions" Relationship="Self.FK_NodoConexion_Transcoder" FromRole="Transcoder" ToRole="NodoConexion" />
+        </EntityType>
+        <Association Name="FK_ContenedorCodecAudio_CodecAudio">
+          <End Role="CodecAudio" Type="Self.CodecAudio" Multiplicity="1" />
+          <End Role="ContenedorCodecAudio" Type="Self.ContenedorCodecAudio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CodecAudio">
+              <PropertyRef Name="IdCodecAudio" />
+            </Principal>
+            <Dependent Role="ContenedorCodecAudio">
+              <PropertyRef Name="IdCodecAudio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContenedorCodecVideo_CodecVideo">
+          <End Role="CodecVideo" Type="Self.CodecVideo" Multiplicity="0..1" />
+          <End Role="ContenedorCodecVideo" Type="Self.ContenedorCodecVideo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CodecVideo">
+              <PropertyRef Name="IdCodecVideo" />
+            </Principal>
+            <Dependent Role="ContenedorCodecVideo">
+              <PropertyRef Name="IdCodecVideo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContenedorCodecAudio_Contenedor">
+          <End Role="Contenedor" Type="Self.Contenedor" Multiplicity="1" />
+          <End Role="ContenedorCodecAudio" Type="Self.ContenedorCodecAudio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contenedor">
+              <PropertyRef Name="IdContenedor" />
+            </Principal>
+            <Dependent Role="ContenedorCodecAudio">
+              <PropertyRef Name="IdContenedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContenedorCodecVideo_Contenedor">
+          <End Role="Contenedor" Type="Self.Contenedor" Multiplicity="0..1" />
+          <End Role="ContenedorCodecVideo" Type="Self.ContenedorCodecVideo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contenedor">
+              <PropertyRef Name="IdContenedor" />
+            </Principal>
+            <Dependent Role="ContenedorCodecVideo">
+              <PropertyRef Name="IdContenedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContenedorTranscoder_Contenedor">
+          <End Role="Contenedor" Type="Self.Contenedor" Multiplicity="1" />
+          <End Role="ContenedorTranscoder" Type="Self.ContenedorTranscoder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contenedor">
+              <PropertyRef Name="IdContenedor" />
+            </Principal>
+            <Dependent Role="ContenedorTranscoder">
+              <PropertyRef Name="IdContenedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContenedorTranscoder_Transcoder">
+          <End Role="Transcoder" Type="Self.Transcoder" Multiplicity="1" />
+          <End Role="ContenedorTranscoder" Type="Self.ContenedorTranscoder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Transcoder">
+              <PropertyRef Name="IdTranscoder" />
+            </Principal>
+            <Dependent Role="ContenedorTranscoder">
+              <PropertyRef Name="IdTranscoder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NodoConexion_Transcoder">
+          <End Role="Transcoder" Type="Self.Transcoder" Multiplicity="0..1" />
+          <End Role="NodoConexion" Type="Self.NodoConexion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Transcoder">
+              <PropertyRef Name="IdTranscoder" />
+            </Principal>
+            <Dependent Role="NodoConexion">
+              <PropertyRef Name="IdTranscoder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PuertoConexion_NodoConexion">
+          <End Role="NodoConexion" Type="Self.NodoConexion" Multiplicity="1" />
+          <End Role="PuertoConexion" Type="Self.PuertoConexion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NodoConexion">
+              <PropertyRef Name="NombreNodo" />
+            </Principal>
+            <Dependent Role="PuertoConexion">
+              <PropertyRef Name="NodoConexion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ProyectoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CodecAudios" EntityType="Self.CodecAudio" />
+          <EntitySet Name="CodecVideos" EntityType="Self.CodecVideo" />
+          <EntitySet Name="Contenedors" EntityType="Self.Contenedor" />
+          <EntitySet Name="ContenedorCodecAudios" EntityType="Self.ContenedorCodecAudio" />
+          <EntitySet Name="ContenedorCodecVideos" EntityType="Self.ContenedorCodecVideo" />
+          <EntitySet Name="ContenedorTranscoders" EntityType="Self.ContenedorTranscoder" />
+          <EntitySet Name="NodoConexions" EntityType="Self.NodoConexion" />
+          <EntitySet Name="PuertoConexions" EntityType="Self.PuertoConexion" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Trabajos" EntityType="Self.Trabajo" />
+          <EntitySet Name="Transcoders" EntityType="Self.Transcoder" />
+          <AssociationSet Name="FK_ContenedorCodecAudio_CodecAudio" Association="Self.FK_ContenedorCodecAudio_CodecAudio">
+            <End Role="CodecAudio" EntitySet="CodecAudios" />
+            <End Role="ContenedorCodecAudio" EntitySet="ContenedorCodecAudios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContenedorCodecVideo_CodecVideo" Association="Self.FK_ContenedorCodecVideo_CodecVideo">
+            <End Role="CodecVideo" EntitySet="CodecVideos" />
+            <End Role="ContenedorCodecVideo" EntitySet="ContenedorCodecVideos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContenedorCodecAudio_Contenedor" Association="Self.FK_ContenedorCodecAudio_Contenedor">
+            <End Role="Contenedor" EntitySet="Contenedors" />
+            <End Role="ContenedorCodecAudio" EntitySet="ContenedorCodecAudios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContenedorCodecVideo_Contenedor" Association="Self.FK_ContenedorCodecVideo_Contenedor">
+            <End Role="Contenedor" EntitySet="Contenedors" />
+            <End Role="ContenedorCodecVideo" EntitySet="ContenedorCodecVideos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContenedorTranscoder_Contenedor" Association="Self.FK_ContenedorTranscoder_Contenedor">
+            <End Role="Contenedor" EntitySet="Contenedors" />
+            <End Role="ContenedorTranscoder" EntitySet="ContenedorTranscoders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContenedorTranscoder_Transcoder" Association="Self.FK_ContenedorTranscoder_Transcoder">
+            <End Role="Transcoder" EntitySet="Transcoders" />
+            <End Role="ContenedorTranscoder" EntitySet="ContenedorTranscoders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NodoConexion_Transcoder" Association="Self.FK_NodoConexion_Transcoder">
+            <End Role="Transcoder" EntitySet="Transcoders" />
+            <End Role="NodoConexion" EntitySet="NodoConexions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PuertoConexion_NodoConexion" Association="Self.FK_PuertoConexion_NodoConexion">
+            <End Role="NodoConexion" EntitySet="NodoConexions" />
+            <End Role="PuertoConexion" EntitySet="PuertoConexions" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ProyectoModelStoreContainer" CdmEntityContainer="ProyectoEntities">
+          <EntitySetMapping Name="CodecAudios">
+            <EntityTypeMapping TypeName="ProyectoModel.CodecAudio">
+              <MappingFragment StoreEntitySet="CodecAudio">
+                <ScalarProperty Name="IdCodecAudio" ColumnName="IdCodecAudio" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CodecVideos">
+            <EntityTypeMapping TypeName="ProyectoModel.CodecVideo">
+              <MappingFragment StoreEntitySet="CodecVideo">
+                <ScalarProperty Name="IdCodecVideo" ColumnName="IdCodecVideo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contenedors">
+            <EntityTypeMapping TypeName="ProyectoModel.Contenedor">
+              <MappingFragment StoreEntitySet="Contenedor">
+                <ScalarProperty Name="IdContenedor" ColumnName="IdContenedor" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContenedorCodecAudios">
+            <EntityTypeMapping TypeName="ProyectoModel.ContenedorCodecAudio">
+              <MappingFragment StoreEntitySet="ContenedorCodecAudio">
+                <ScalarProperty Name="IdContenedorAudio" ColumnName="IdContenedorAudio" />
+                <ScalarProperty Name="IdContenedor" ColumnName="IdContenedor" />
+                <ScalarProperty Name="IdCodecAudio" ColumnName="IdCodecAudio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContenedorCodecVideos">
+            <EntityTypeMapping TypeName="ProyectoModel.ContenedorCodecVideo">
+              <MappingFragment StoreEntitySet="ContenedorCodecVideo">
+                <ScalarProperty Name="IdContenedorCodecVideo" ColumnName="IdContenedorCodecVideo" />
+                <ScalarProperty Name="IdContenedor" ColumnName="IdContenedor" />
+                <ScalarProperty Name="IdCodecVideo" ColumnName="IdCodecVideo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContenedorTranscoders">
+            <EntityTypeMapping TypeName="ProyectoModel.ContenedorTranscoder">
+              <MappingFragment StoreEntitySet="ContenedorTranscoder">
+                <ScalarProperty Name="IdContenedorTranscoder" ColumnName="IdContenedorTranscoder" />
+                <ScalarProperty Name="IdContenedor" ColumnName="IdContenedor" />
+                <ScalarProperty Name="IdTranscoder" ColumnName="IdTranscoder" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NodoConexions">
+            <EntityTypeMapping TypeName="ProyectoModel.NodoConexion">
+              <MappingFragment StoreEntitySet="NodoConexion">
+                <ScalarProperty Name="IPv4" ColumnName="IPv4" />
+                <ScalarProperty Name="IPv6" ColumnName="IPv6" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Contraseña" ColumnName="Contraseña" />
+                <ScalarProperty Name="NombreNodo" ColumnName="NombreNodo" />
+                <ScalarProperty Name="FQDN" ColumnName="FQDN" />
+                <ScalarProperty Name="IdTranscoder" ColumnName="IdTranscoder" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PuertoConexions">
+            <EntityTypeMapping TypeName="ProyectoModel.PuertoConexion">
+              <MappingFragment StoreEntitySet="PuertoConexion">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="NodoConexion" ColumnName="NodoConexion" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="ProyectoModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Trabajos">
+            <EntityTypeMapping TypeName="ProyectoModel.Trabajo">
+              <MappingFragment StoreEntitySet="Trabajos">
+                <ScalarProperty Name="transcodeStatus" ColumnName="transcodeStatus" />
+                <ScalarProperty Name="audioBitRate" ColumnName="audioBitRate" />
+                <ScalarProperty Name="sampling" ColumnName="sampling" />
+                <ScalarProperty Name="channels" ColumnName="channels" />
+                <ScalarProperty Name="audioCodec" ColumnName="audioCodec" />
+                <ScalarProperty Name="videoBitRate" ColumnName="videoBitRate" />
+                <ScalarProperty Name="width" ColumnName="width" />
+                <ScalarProperty Name="height" ColumnName="height" />
+                <ScalarProperty Name="videoCodec" ColumnName="videoCodec" />
+                <ScalarProperty Name="container" ColumnName="container" />
+                <ScalarProperty Name="transcoder" ColumnName="transcoder" />
+                <ScalarProperty Name="targetFile" ColumnName="targetFile" />
+                <ScalarProperty Name="sourceFile" ColumnName="sourceFile" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Resultado" ColumnName="Resultado" />
+                <ScalarProperty Name="Comentarios" ColumnName="Comentarios" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Transcoders">
+            <EntityTypeMapping TypeName="ProyectoModel.Transcoder">
+              <MappingFragment StoreEntitySet="Transcoder">
+                <ScalarProperty Name="IdTranscoder" ColumnName="IdTranscoder" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="VersionAPI" ColumnName="VersionAPI" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

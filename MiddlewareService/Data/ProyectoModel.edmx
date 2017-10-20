@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ProyectoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Trabajos">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tipo" Type="varchar" MaxLength="50" />
+          <Property Name="Resultado" Type="varchar" MaxLength="50" />
+          <Property Name="Comentarios" Type="varchar" MaxLength="50" />
+          <Property Name="sourceFile" Type="varchar" MaxLength="50" />
+          <Property Name="targetFile" Type="varchar" MaxLength="50" />
+          <Property Name="transcoder" Type="varchar" MaxLength="50" />
+          <Property Name="container" Type="varchar" MaxLength="50" />
+          <Property Name="videoCodec" Type="varchar" MaxLength="50" />
+          <Property Name="height" Type="varchar" MaxLength="50" />
+          <Property Name="width" Type="varchar" MaxLength="50" />
+          <Property Name="videoBitRate" Type="varchar" MaxLength="50" />
+          <Property Name="audioCodec" Type="varchar" MaxLength="50" />
+          <Property Name="channels" Type="varchar" MaxLength="50" />
+          <Property Name="sampling" Type="varchar" MaxLength="50" />
+          <Property Name="audioBitRate" Type="varchar" MaxLength="50" />
+          <Property Name="transcodeStatus" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="ProyectoModelStoreContainer">
+          <EntitySet Name="Trabajos" EntityType="Self.Trabajos" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ProyectoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Trabajo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Resultado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Comentarios" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="sourceFile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="targetFile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="transcoder" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="container" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="videoCodec" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="height" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="width" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="videoBitRate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="audioCodec" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="channels" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="sampling" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="audioBitRate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="transcodeStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="ProyectoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Trabajos" EntityType="Self.Trabajo" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ProyectoModelStoreContainer" CdmEntityContainer="ProyectoEntities">
+          <EntitySetMapping Name="Trabajos">
+            <EntityTypeMapping TypeName="ProyectoModel.Trabajo">
+              <MappingFragment StoreEntitySet="Trabajos">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Resultado" ColumnName="Resultado" />
+                <ScalarProperty Name="Comentarios" ColumnName="Comentarios" />
+                <ScalarProperty Name="sourceFile" ColumnName="sourceFile" />
+                <ScalarProperty Name="targetFile" ColumnName="targetFile" />
+                <ScalarProperty Name="transcoder" ColumnName="transcoder" />
+                <ScalarProperty Name="container" ColumnName="container" />
+                <ScalarProperty Name="videoCodec" ColumnName="videoCodec" />
+                <ScalarProperty Name="height" ColumnName="height" />
+                <ScalarProperty Name="width" ColumnName="width" />
+                <ScalarProperty Name="videoBitRate" ColumnName="videoBitRate" />
+                <ScalarProperty Name="audioCodec" ColumnName="audioCodec" />
+                <ScalarProperty Name="channels" ColumnName="channels" />
+                <ScalarProperty Name="sampling" ColumnName="sampling" />
+                <ScalarProperty Name="audioBitRate" ColumnName="audioBitRate" />
+                <ScalarProperty Name="transcodeStatus" ColumnName="transcodeStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

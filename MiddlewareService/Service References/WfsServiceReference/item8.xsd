@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Rhozet.JobManager" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Rhozet.JobManager" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="JobManagerStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Active" />
+      <xs:enumeration value="Standby" />
+      <xs:enumeration value="Inactive" />
+      <xs:enumeration value="DatabaseError" />
+      <xs:enumeration value="BindingError" />
+      <xs:enumeration value="DatabaseVersionError" />
+      <xs:enumeration value="NetworkConnectionError" />
+      <xs:enumeration value="RoleError" />
+      <xs:enumeration value="Expiring" />
+      <xs:enumeration value="Expired" />
+      <xs:enumeration value="BackupNotAllowed" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="JobManagerStatus" nillable="true" type="tns:JobManagerStatus" />
+</xs:schema>

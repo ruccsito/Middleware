@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f3e92323ab95457187ee06456797664c" Name="Diagram1">
+        <EntityTypeShape EntityType="ProyectoModel.CodecAudio" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoModel.CodecVideo" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoModel.Contenedor" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoModel.ContenedorCodecAudio" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoModel.ContenedorCodecVideo" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoModel.ContenedorTranscoder" Width="1.5" PointX="3" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoModel.NodoConexion" Width="1.5" PointX="3" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoModel.PuertoConexion" Width="1.5" PointX="5.25" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoModel.sysdiagram" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoModel.Trabajo" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoModel.Transcoder" Width="1.5" PointX="0.75" PointY="9.875" IsExpanded="true" />
+        <AssociationConnector Association="ProyectoModel.FK_ContenedorCodecAudio_CodecAudio" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoModel.FK_ContenedorCodecVideo_CodecVideo" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoModel.FK_ContenedorCodecAudio_Contenedor" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoModel.FK_ContenedorCodecVideo_Contenedor" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoModel.FK_ContenedorTranscoder_Contenedor" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoModel.FK_ContenedorTranscoder_Transcoder" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoModel.FK_NodoConexion_Transcoder" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoModel.FK_PuertoConexion_NodoConexion" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
