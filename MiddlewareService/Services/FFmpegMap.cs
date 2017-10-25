@@ -5,20 +5,34 @@ namespace MiddlewareService.Services
     class FFmpegMap
     {
         public Dictionary<string, string> audioCodec { get; set; }
+        public Dictionary<string, string> audioChannels { get; set; }
+        public Dictionary<string, string> audioSampling { get; set; }
+
         public Dictionary<string, string> audioBitrate { get; set; }
         public Dictionary<string, string> videoCodec { get; set; }
         public Dictionary<string, string> videoBitrate { get; set; }
 
 
+
+
         public FFmpegMap()
         {
             audioCodec = new Dictionary<string, string>();
+            audioChannels = new Dictionary<string, string>();
+            audioSampling = new Dictionary<string, string>();
+
             audioBitrate = new Dictionary<string, string>();
             videoCodec = new Dictionary<string, string>();
             videoBitrate = new Dictionary<string, string>();
 
             audioCodec.Add("AAC-LC", "aac");
             audioCodec.Add("AAC-HE", "aac");
+
+            audioChannels.Add("Stereo", "2");
+            audioChannels.Add("5.1", "6");
+
+            audioSampling.Add("22", "22100");
+            audioSampling.Add("44", "44100");
 
             audioBitrate.Add("64", "64k");
             audioBitrate.Add("96", "96k");

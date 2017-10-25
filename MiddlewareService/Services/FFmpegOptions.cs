@@ -6,6 +6,8 @@ namespace MiddlewareService.Services
     {
         private FFmpegMap fm = new FFmpegMap();
         public string audioCodec { get; set; }
+        public string audioChannels { get; set; }
+        public string audioSampling { get; set; }
         public string audioBitrate { get; set; }
         public string videoCodec { get; set; }
         public string videoBitrate { get; set; }
@@ -13,6 +15,8 @@ namespace MiddlewareService.Services
         public FFmpegOptions(Trabajo trabajo)
         {
             audioCodec = fm.audioCodec[trabajo.audioCodec];
+            audioChannels = fm.audioChannels[trabajo.channels];
+            audioSampling = fm.audioSampling[trabajo.sampling];
             audioBitrate = fm.audioBitrate[trabajo.audioBitRate];
 
             videoCodec = fm.videoCodec[trabajo.videoCodec];
