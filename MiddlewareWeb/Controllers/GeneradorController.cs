@@ -24,7 +24,7 @@ namespace MiddlewareWeb.Controllers
         {
             FormData fd = new FormData();
             fd.id = "containersSelect";
-            fd.name = "containerSelect";
+            fd.name = "container";
             fd.placeholder = "Seleccionar Contenedor";
             fd.options = formRepo.GetContainers(option);
 
