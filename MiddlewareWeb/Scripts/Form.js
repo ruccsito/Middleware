@@ -27,3 +27,27 @@ $(document).on('change', '#containers', '#containerSelect', function () {
         $('#audioCodecs').fadeIn('fast');
     });
 });
+
+$(document).on('change', '#audioCodecs', function () {
+    /* Get the selected value of dropdownlist */
+    var option = $('#audioCodecs option:selected').val()
+    $.get('/Generador/GetChannels/' + option, function (data) {
+        $('#channels').html(data);
+        $('#channels').fadeIn('fast');
+    });
+});
+
+$(document).on('change', '#audioCodecs', function () {
+    /* Get the selected value of dropdownlist */
+    var transcoder = $('#transcodeSelect option:selected').val()
+    var container = $('#containerSelect option:selected').val()
+    var videoCode = $('#transcodeSelect option:selected').val()
+    if (true) {
+
+    }
+    var option = $('#audioCodecs option:selected').val() + $('#audioCodecs option:selected').val()
+    $.get('/Generador/GetAudioBitrate/' + option, function (data) {
+        $('#audioBitrate').html(data);
+        $('#audioBitrate').fadeIn('fast');
+    });
+});

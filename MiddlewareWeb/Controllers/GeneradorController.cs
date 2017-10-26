@@ -24,7 +24,7 @@ namespace MiddlewareWeb.Controllers
         {
             FormData fd = new FormData();
             fd.id = "containersSelect";
-            fd.name = "container";
+            fd.name = "containerSelect";
             fd.placeholder = "Seleccionar Contenedor";
             fd.options = formRepo.GetContainers(option);
 
@@ -49,6 +49,28 @@ namespace MiddlewareWeb.Controllers
             fd.name = "audioCodec";
             fd.placeholder = "Seleccionar";
             fd.options = formRepo.GetAudioCodecs(option);
+
+            return PartialView("Selects", fd);
+        }
+
+        public ActionResult GetChannels(string option)
+        {
+            FormData fd = new FormData();
+            fd.id = "audioCodecs";
+            fd.name = "audioCodec";
+            fd.placeholder = "Seleccionar";
+            fd.options = formRepo.GetChannels(option);
+
+            return PartialView("Selects", fd);
+        }
+
+        public ActionResult GetAudioBitrate(string option)
+        {
+            FormData fd = new FormData();
+            fd.id = "audioCodecs";
+            fd.name = "audioCodec";
+            fd.placeholder = "Seleccionar";
+            fd.options = formRepo.GetAudioBitrate(option);
 
             return PartialView("Selects", fd);
         }

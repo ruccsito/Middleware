@@ -34,7 +34,7 @@
                 </div>
                 <label class="col-form-legend col-sm-2">Contenedor</label>
                 <div class="col-sm-4" id="containers">
-                    <select class="custom-select" name="container" id="containersSelect">
+                    <select class="custom-select" name="containersSelect" id="containersSelect">
                         <option disabled selected>Seleccionar Contenedor</option>
                     </select>
                 </div>
@@ -103,10 +103,8 @@
             </div>
             <div class="form-group col-md-3">
                 <label for="channels" class="col-form-label">Canales</label>
-                <select name="channels" class="form-control">
+                <select name="channels" id="channels" class="form-control">
                     <option disabled selected>Seleccionar</option>
-                    <option value="Stereo">Stereo</option>
-                    <option value="5.1">5.1</option>
                 </select>
             </div>
             <div class="form-group col-md-3">
@@ -120,13 +118,8 @@
             </div>
             <div class="form-group col-md-3">
                 <label for="audioBitrate" class="col-form-label">Bit-rate Audio (Kbps)</label>
-                <select name="audioBitrate" class="form-control">
+                <select name="audioBitrate" id="audioBitrate" class="form-control">
                     <option disabled selected>Seleccionar</option>
-                    <option value="64">64</option>
-                    <option value="96">96</option>
-                    <option value="128">128</option>
-					<option value="192">192</option>
-                    <option value="256">256</option>
                 </select>
             </div>
         </div>
