@@ -24,8 +24,8 @@ namespace MiddlewareService.Services
                 if (File.Exists(t.targetFile))
                         File.Delete(t.targetFile);
 
-                string parameters = string.Format(@"-i {0} -vf scale={1}:{2} -acodec {3} -ac {4} -ar {5} -ab {6} -vcodec {7} -x264-params ""nal-hrd=cbr"" -b:v {8} -minrate {8} -maxrate {8} {9}", 
-                                                    t.sourceFile, t.width, t.height, fo.audioCodec, fo.audioChannels, fo.audioSampling, fo.audioBitrate, fo.videoCodec, fo.videoBitrate, t.targetFile);
+                string parameters = string.Format(@"-i {0} -vf scale={1}:{2} -acodec {3} -ac {4} -ar {5} -ab {6} -vcodec {7} -b:v {8} -minrate {8} -maxrate {8} -f {9} {10}", 
+                                                    t.sourceFile, t.width, t.height, fo.audioCodec, fo.audioChannels, fo.audioSampling, fo.audioBitrate, fo.videoCodec, fo.videoBitrate, t.container ,t.targetFile);
 
                 Console.WriteLine("Creando un job FFMPEG para " + t.sourceFile);
                 tr.UpdateStatus(t, "En proceso");

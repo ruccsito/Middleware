@@ -52,5 +52,27 @@ namespace MiddlewareWeb.Controllers
 
             return PartialView("Selects", fd);
         }
+
+        public ActionResult GetChannels(string option)
+        {
+            FormData fd = new FormData();
+            fd.id = "audioCodecs";
+            fd.name = "audioCodec";
+            fd.placeholder = "Seleccionar";
+            fd.options = formRepo.GetChannels(option);
+
+            return PartialView("Selects", fd);
+        }
+
+        public ActionResult GetAudioBitrate(string option)
+        {
+            FormData fd = new FormData();
+            fd.id = "audioCodecs";
+            fd.name = "audioCodec";
+            fd.placeholder = "Seleccionar";
+            fd.options = formRepo.GetAudioBitrate(option);
+
+            return PartialView("Selects", fd);
+        }
     }
 }

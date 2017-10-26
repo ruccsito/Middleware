@@ -26,7 +26,9 @@ namespace MiddlewareService.Services
             videoBitrate = new Dictionary<string, string>();
 
             audioCodec.Add("AAC-LC", "aac");
-            audioCodec.Add("AAC-HE", "aac");
+            audioCodec.Add("MP3", "mp3");
+            audioCodec.Add("AC3", "ac3");
+            audioCodec.Add("Vorbis", "libvorbis");
 
             audioChannels.Add("Stereo", "2");
             audioChannels.Add("5.1", "6");
@@ -40,7 +42,8 @@ namespace MiddlewareService.Services
             audioBitrate.Add("192", "192k");
             audioBitrate.Add("256", "256k");
 
-            videoCodec.Add("H.264 AVC", "libx264");
+            videoCodec.Add("H.264 AVC", "libx264 -x264-params \"nal-hrd=cbr\"");
+            videoCodec.Add("VP9", "libvpx-vp9");
 
             videoBitrate.Add("1000", "1M");
             videoBitrate.Add("2000", "2M");

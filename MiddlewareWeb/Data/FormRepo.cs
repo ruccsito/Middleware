@@ -42,5 +42,39 @@ namespace MiddlewareWeb.Data
                     where ct.Nombre == container
                     select ca.Nombre).ToList();
         }
+
+        public List<string> GetChannels(string audioCodec)
+        {
+            List<string> results = new List<string>();
+
+            switch (audioCodec)
+            {
+                case "MP3":
+                    results.Add("Stereo");
+                    break;
+
+                default:
+                    results.AddRange(new [] { "Stereo", "5.1" });
+                    break;
+            }
+
+            return results;
+        }
+        public List<string> GetAudioBitrate(string audioCodec)
+        {
+            List<string> results = new List<string>();
+
+            switch (audioCodec)
+            {
+                case "Vorbis":
+                    results.AddRange(new [] { "96","128","192","256" });
+                    break;
+
+                default:
+                    results.AddRange(new [] { "64","96", "128", "192", "256" });
+                    break;
+            }
+            return results;
+        }
     }
 }
