@@ -1,6 +1,7 @@
 ﻿using System.Threading;
 using MiddlewareService.Data;
 using MiddlewareService.Services;
+using System.Threading.Tasks;
 
 namespace MiddlewareService
 {
@@ -36,7 +37,7 @@ namespace MiddlewareService
                     }
                 }
 
-                Thread.Sleep(10000); 
+                Thread.Sleep(10000);
             }
         }
     }

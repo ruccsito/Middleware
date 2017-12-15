@@ -29,7 +29,7 @@ namespace MiddlewareService.Data
             {
                 db.SaveChanges();
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 throw;
             }

@@ -89,8 +89,8 @@
           <Property Name="Tipo" Type="nvarchar" MaxLength="50" />
           <Property Name="Resultado" Type="nvarchar" MaxLength="50" />
           <Property Name="Comentarios" Type="nvarchar" MaxLength="50" />
-          <Property Name="sourceFile" Type="nvarchar" MaxLength="50" />
-          <Property Name="targetFile" Type="nvarchar" MaxLength="50" />
+          <Property Name="sourceFile" Type="nvarchar" MaxLength="250" />
+          <Property Name="targetFile" Type="nvarchar" MaxLength="250" />
           <Property Name="transcoder" Type="nvarchar" MaxLength="50" />
           <Property Name="container" Type="nvarchar" MaxLength="50" />
           <Property Name="videoCodec" Type="nvarchar" MaxLength="50" />
@@ -355,8 +355,8 @@
           <Property Name="Tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Resultado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Comentarios" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="sourceFile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="targetFile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sourceFile" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="targetFile" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="transcoder" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="container" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="videoCodec" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />

@@ -4,34 +4,33 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ProyectoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ProyectoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Trabajos">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Tipo" Type="varchar" MaxLength="50" />
-          <Property Name="Resultado" Type="varchar" MaxLength="50" />
-          <Property Name="Comentarios" Type="varchar" MaxLength="50" />
-          <Property Name="sourceFile" Type="varchar" MaxLength="50" />
-          <Property Name="targetFile" Type="varchar" MaxLength="50" />
-          <Property Name="transcoder" Type="varchar" MaxLength="50" />
-          <Property Name="container" Type="varchar" MaxLength="50" />
-          <Property Name="videoCodec" Type="varchar" MaxLength="50" />
-          <Property Name="height" Type="varchar" MaxLength="50" />
-          <Property Name="width" Type="varchar" MaxLength="50" />
-          <Property Name="videoBitRate" Type="varchar" MaxLength="50" />
-          <Property Name="audioCodec" Type="varchar" MaxLength="50" />
-          <Property Name="channels" Type="varchar" MaxLength="50" />
-          <Property Name="sampling" Type="varchar" MaxLength="50" />
-          <Property Name="audioBitRate" Type="varchar" MaxLength="50" />
-          <Property Name="transcodeStatus" Type="varchar" MaxLength="50" />
+          <Property Name="Tipo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Resultado" Type="nvarchar" MaxLength="50" />
+          <Property Name="Comentarios" Type="nvarchar" MaxLength="50" />
+          <Property Name="sourceFile" Type="nvarchar" MaxLength="250" />
+          <Property Name="targetFile" Type="nvarchar" MaxLength="250" />
+          <Property Name="transcoder" Type="nvarchar" MaxLength="50" />
+          <Property Name="container" Type="nvarchar" MaxLength="50" />
+          <Property Name="videoCodec" Type="nvarchar" MaxLength="50" />
+          <Property Name="height" Type="nvarchar" MaxLength="50" />
+          <Property Name="width" Type="nvarchar" MaxLength="50" />
+          <Property Name="videoBitRate" Type="nvarchar" MaxLength="50" />
+          <Property Name="audioCodec" Type="nvarchar" MaxLength="50" />
+          <Property Name="channels" Type="nvarchar" MaxLength="50" />
+          <Property Name="sampling" Type="nvarchar" MaxLength="50" />
+          <Property Name="audioBitRate" Type="nvarchar" MaxLength="50" />
+          <Property Name="transcodeStatus" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityContainer Name="ProyectoModelStoreContainer">
           <EntitySet Name="Trabajos" EntityType="Self.Trabajos" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ProyectoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -40,22 +39,22 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Resultado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Comentarios" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="sourceFile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="targetFile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="transcoder" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="container" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="videoCodec" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="height" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="width" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="videoBitRate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="audioCodec" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="channels" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="sampling" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="audioBitRate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="transcodeStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Resultado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Comentarios" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sourceFile" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="targetFile" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="transcoder" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="container" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="videoCodec" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="height" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="width" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="videoBitRate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="audioCodec" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="channels" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sampling" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="audioBitRate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="transcodeStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityContainer Name="ProyectoEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Trabajos" EntityType="Self.Trabajo" />

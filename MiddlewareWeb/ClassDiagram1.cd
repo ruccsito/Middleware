@@ -1,2 +1,165 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram /> 
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="MiddlewareWeb.BundleConfig" Collapsed="true">
+    <Position X="2" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\BundleConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MiddlewareWeb.FilterConfig" Collapsed="true">
+    <Position X="5.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\FilterConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MiddlewareWeb.RouteConfig" Collapsed="true">
+    <Position X="3.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\RouteConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MiddlewareWeb.MvcApplication" Collapsed="true">
+    <Position X="5.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Global.asax.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MiddlewareWeb.Startup" Collapsed="true">
+    <Position X="5.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>Startup.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MiddlewareWeb.Controllers.GeneradorController" Collapsed="true">
+    <Position X="2" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAgAAAAAAAAAAAAAAAAAAABAAAAmAABAAAAA=</HashCode>
+      <FileName>Controllers\GeneradorController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MiddlewareWeb.Controllers.HomeController" Collapsed="true">
+    <Position X="3.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\HomeController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MiddlewareWeb.Controllers.TrabajosController" Collapsed="true">
+    <Position X="2" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAEBAAACAAA=</HashCode>
+      <FileName>Controllers\TrabajosController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MiddlewareWeb.Data.FormRepo" Collapsed="true">
+    <Position X="9" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAQAAAAAAIAAAAAAABAAAgAAABAgAAA=</HashCode>
+      <FileName>Data\FormRepo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MiddlewareWeb.Data.ProyectoEntities">
+    <Position X="10.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAIAAAAAAAAAEMAAAAAAEgCAECAAAKA=</HashCode>
+      <FileName>Data\ProyectoModel.Context.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MiddlewareWeb.Data.CodecAudio" Collapsed="true">
+    <Position X="3.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Data\CodecAudio.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MiddlewareWeb.Data.CodecVideo" Collapsed="true">
+    <Position X="5.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAAAAAgAAAAAAAAAAAAACAAAAAAAA=</HashCode>
+      <FileName>Data\CodecVideo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MiddlewareWeb.Data.Contenedor" Collapsed="true">
+    <Position X="7.25" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAgAAAAEEAAAAAEACAAAAAAAA=</HashCode>
+      <FileName>Data\Contenedor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MiddlewareWeb.Data.ContenedorCodecAudio" Collapsed="true">
+    <Position X="9" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>YAAAEAAAAAAAAAAAAAAAAAAABAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\ContenedorCodecAudio.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MiddlewareWeb.Data.ContenedorCodecVideo" Collapsed="true">
+    <Position X="2" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAABAAAAAAAAAAAAAAAAAUAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Data\ContenedorCodecVideo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MiddlewareWeb.Data.ContenedorTranscoder" Collapsed="true">
+    <Position X="3.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEIAAAAAAAAAAAAAAABAAAAEAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>Data\ContenedorTranscoder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MiddlewareWeb.Data.NodoConexion" Collapsed="true">
+    <Position X="7.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CgAAAIAAAAAAAAIAAAAAAAAAAIgAgAAAAAAEAAQAAAA=</HashCode>
+      <FileName>Data\NodoConexion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MiddlewareWeb.Data.PuertoConexion" Collapsed="true">
+    <Position X="2" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAABBAQ=</HashCode>
+      <FileName>Data\PuertoConexion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MiddlewareWeb.Data.sysdiagram" Collapsed="true">
+    <Position X="7.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAIAAAAAAAAAAAAAAAQAAAFAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\sysdiagram.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MiddlewareWeb.Data.Trabajo">
+    <Position X="12.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAIAEAACAAgAQAQAAAAEAhAAIQAAAAAAAQAAAICAQ=</HashCode>
+      <FileName>Data\Trabajo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MiddlewareWeb.Data.Transcoder">
+    <Position X="5.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAACAIAAAAAAAAAAAAAAgAAAAEAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Data\Transcoder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MiddlewareWeb.Data.TrabajosRepo" Collapsed="true">
+    <Position X="3.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAMAAAAAQAABAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\TrabajosRepo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MiddlewareWeb.Models.FormData" Collapsed="true">
+    <Position X="7.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAEAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Models\FormData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
